@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: frontend-stage-config
+  namespace: instanode
+data:
+  VITE_API_URL: 'https://user-stage.instanodes.io/'
+  VITE_APP_URL: 'development'
+  VITE_DOMAIN_KEY: 'mKgLeV8MYF3g8C095lujW4QCEdFfUdHd'
+  VITE_GOOGLE_CLIENT_ID: '989430553287-eov0baihuis86kiupi9din44nic6h9bp.apps.googleusercontent.com'
+  VITE_REDIRECT_URL: 'your_redirect_url'
+  VITE_APPLE_CLIENT_ID: 'your_client_id'
+  VITE_STRIPE_KEY: 'pk_live_51R1jNBCT9xhZUJebpPtvDhRHGAZyF13jyMjq7bA5PTuXRROAXGV4qRi8cuEC8JFWjn2A9ydpe0W0pcOH9R6DOML600uJ0oLmNr'
+  NEXT_PUBLIC_REOWN_APPKIT_PROJECT_ID: 'NEXT_PUBLIC_REOWN_APPKIT_PROJECT_ID'

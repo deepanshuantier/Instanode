@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-stage
+  namespace: instanode
+spec:
+  selector:
+    app: frontend-stage
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP 

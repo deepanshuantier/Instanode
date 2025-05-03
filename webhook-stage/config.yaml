@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: webhook-stage-config
+  namespace: instanode
+data:
+  PORT: '4242'
+  KAFKA_BROKER_PRIVATE: '10.0.19.235:9092,10.0.20.40:9092,10.0.30.144:9092'
+  STRIPE_SK_KEY: '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'
+  STRIPE_WEEBHOOK_KEY: 'whsec_7XkTd16ohc8pPP57tIMD6nUzaTRdiIK3'

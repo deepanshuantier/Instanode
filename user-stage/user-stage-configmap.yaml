@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: user-stage-config
+  namespace: instanode
+data:
+  PORT: '3005'
+
+  # DB
+  DB_HOST: 'proddbinstanodes.internal.la-north-2.mysql.rds.myhuaweicloud.com'
+  DB_PORT: '3306'
+  DB_USER: 'root'
+  DB_PASS: 'rafo85-r32hfucrU0'
+  DATABASE: 'instanode-live'
+
+  # REDIS
+  REDISHOST: 'localhost'
+  REDISPORT: '6379'
+
+  PROJECT_NAME: 'INSTANODE'
+  PROJECT_DESCRIPTION: 'API documentation for Insta Node'
+  OTP_EXPIRE_TIME: '5'
+
+  JWT_ACCESS_EXPIRE_TIME: '24h'
+  JWT_ACCESSS_SECRET: 'AbfI7Ep5UWT7FQR'
+
+  GOOGLE_CLIENT_ID: '989430553287-eov0baihuis86kiupi9din44nic6h9bp.apps.googleusercontent.com'
+  DEDICATED_PLAN_ID: '20984453'
+  STRIPE_SECURITY_KEY: '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'
+  HUAWEI_DOMAIN_FOR_TOKEN: 'hid_a3z-vbyw7ry60_c'
+  HUAWEI_USER_NAME: 'koo-message'
+  HUAWEI_USER_PASSWORD: 'tvAyk9nVLfbJLIVnGqqKtCJR'
+  HUAWEI_KOO_MESSAGE_SEND: 'https://koomessage.ap-southeast-3.myhuaweicloud.com/v1/email/send'
+  HUAWEI_GET_TOKEN: 'https://iam.ap-southeast-3.myhuaweicloud.com/v3/auth/tokens'
+  SENDER_MAIL_ID: 'noreply@support.instanodes.io'
+  KONG_BASE_URL: 'http://kong.instanodes.private:8001/default/'
+  GRAFANA_BASE_URL: 'http://10.0.5.190:3000/'
+  PROMETHEUS_BASE_URL: 'http://10.0.5.190:9090/'
+  GRAFANA_USER_NAME: 'admin'
+  GRAFANA_PASSWORD: 'admin@123'
+  KAFKA_BROKER: '10.0.19.235:9092,10.0.20.40:9092,10.0.30.144:9092'

@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-stage
+  namespace: instanode
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend-stage
+  template:
+    metadata:
+      labels:
+        app: frontend-stage
+    spec:
+      containers:
+        - name: nginx-frontend
+          image: swr.la-north-2.myhuaweicloud.com/instanodes-organization/instanode-user-panel:7
+          ports:
+            - containerPort: 80 # 🔁 Nginx typically serves on port 80
+          # envFrom:
+          #   - configMapRef:
+          #       name: frontend-stage-config
+          resources:
+            requests:
+              cpu: '500m'
+              memory: '512Mi'
+            limits:
+              cpu: '1000m'
+              memory: '1024Mi'
+
+          startupProbe:
+            httpGet:
+              path: / # Adjust if your Nginx serves a different health route
+              port: 80
+            failureThreshold: 12
+            periodSeconds: 5
+            timeoutSeconds: 2
+
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 15
+            failureThreshold: 3
+
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            failureThreshold: 3
+
+      imagePullSecrets:
+        - name: default-secret
+      restartPolicy: Always

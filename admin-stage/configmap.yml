@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: admin-stage-config
+  namespace: instanode
+data:
+  PORT: '3006'
+  DB_HOST: 'proddbinstanodes.internal.la-north-2.mysql.rds.myhuaweicloud.com'
+  DB_PORT: '3306'
+  DB_USER: 'root'
+  DB_PASS: 'rafo85-r32hfucrU0'
+  DB: 'instanode-live'
+  STRIPE_KEY: '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'

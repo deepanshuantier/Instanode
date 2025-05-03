@@ -1,0 +1,58 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: user-stage-ingress
+  namespace: instanode
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: user-stage.instanodes.io
+      http:
+        paths:
+          - path: /user
+            pathType: Prefix
+            backend:
+              service:
+                name: user-stage-service
+                port:
+                  number: 3005
+          - path: /raas
+            pathType: Prefix
+            backend:
+              service:
+                name: raas-stage-service
+                port:
+                  number: 3007
+
+    - host: admin-stage.instanodes.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: admin-stage-service
+                port:
+                  number: 3006
+
+    - host: webhook-stage.instanodes.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: webhook-stage-service
+                port:
+                  number: 4242
+
+    - host: app.instanodes.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend-stage
+                port:
+                  number: 80
