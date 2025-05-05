@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webhook-stage
+  namespace: instanode
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webhook-stage
+  template:
+    metadata:
+      labels:
+        app: webhook-stage
+    spec:
+      containers:
+        - name: webhook-stage-container
+          image: swr.la-north-2.myhuaweicloud.com/instanodes-organization/webhook-stage:latest
+          ports:
+            - containerPort: 3005
+          envFrom:
+            - configMapRef:
+                name: webhook-stage-config
+          resources:
+            requests:
+              cpu: '100m' # 🧑‍💻 CPU request (Minimal resources needed to start)
+              memory: '128Mi' # 🧠 Memory request (Minimal memory needed)
+            limits:
+              cpu: '500m' # 💪 CPU limit (Max resources allowed)
+              memory: '512Mi' # 🚀 Memory limit (Max memory allowed)
+
+          # ⏳ Startup Probe: Container startup grace period (1-minute)
+          # startupProbe:
+          #   httpGet:
+          #     path: /health         # ✅ Health check path
+          #     port: 3000            # 🌐 Health check port
+          #   failureThreshold: 12     # ⏰ Retry 12 times (60 seconds total)
+          #   periodSeconds: 5         # 🔄 Check every 5 seconds
+          #   timeoutSeconds: 2        # ⏱️ Timeout after 2 seconds if no response
+
+          # # ❤️ Liveness Probe: Container health during operation
+          # livenessProbe:
+          #   httpGet:
+          #     path: /health         # ✅ Health check path
+          #     port: 3000            # 🌐 Health check port
+          #   initialDelaySeconds: 10  # ⏳ Wait 10 seconds before starting first probe
+          #   periodSeconds: 15        # 🔄 Check every 15 seconds after initial delay
+          #   failureThreshold: 3      # ❌ Retry 3 times before marking unhealthy
+
+          # # 🚦 Readiness Probe: Check if container is ready for traffic
+          # readinessProbe:
+          #   httpGet:
+          #     path: /health         # ✅ Health check path
+          #     port: 3000            # 🌐 Health check port
+          #   initialDelaySeconds: 5   # ⏳ Wait 5 seconds before starting first readiness check
+          #   periodSeconds: 10        # 🔄 Check every 10 seconds after initial delay
+          #   failureThreshold: 3      # ❌ Retry 3 times before marking not ready
+      imagePullSecrets:
+        - name: default-secret
+      restartPolicy: Always
