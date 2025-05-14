@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: user-stage-container
-          image: swr.la-north-2.myhuaweicloud.com/instanodes-organization/tenant-stage:latest
+          image: swr.la-north-2.myhuaweicloud.com/instanodes-organization/tenant-stage:v1.0.1
           imagePullPolicy: Always
           ports:
             - containerPort: 3005
