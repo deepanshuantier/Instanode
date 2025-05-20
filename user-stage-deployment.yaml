@@ -4,7 +4,7 @@ metadata:
   name: user-stage
   namespace: instanode
 spec:
-  replicas: 3
+  replicas: 4
   selector:
     matchLabels:
       app: user-stage
