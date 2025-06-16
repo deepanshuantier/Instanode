@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: raas-stage-container
-          image: swr.la-north-2.myhuaweicloud.com/instanodes-organization/raas-stage:v1.2.9
+          image: swr.la-north-2.myhuaweicloud.com/instanodes-organization/raas-stage:v1.2.10
           ports:
             - containerPort: 3005
           envFrom:
