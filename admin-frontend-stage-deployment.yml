@@ -18,9 +18,9 @@ spec:
           image: swr.la-north-2.myhuaweicloud.com/instanodes-organization/instanode-admin-frontend:v1.1.1
           ports:
             - containerPort: 80 # 🔁 Nginx typically serves on port 80
-          # envFrom:
-          #   - configMapRef:
-          #       name: frontend-stage-config
+          envFrom:
+             - configMapRef:
+                 name: frontend-stage-config
           resources:
             requests:
               cpu: '500m'
