@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: oneclick-backend-stage
-          image: swr.la-north-2.myhuaweicloud.com/instanodes-organization/oneclick-backend:v1.0.3
+          image: swr.la-north-2.myhuaweicloud.com/instanodes-organization/oneclick-backend:v1.0.4
           ports:
             - containerPort: 3004
           envFrom:
