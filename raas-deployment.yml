@@ -17,7 +17,7 @@ spec:
         - name: raas-stage-container
           image: swr.la-north-2.myhuaweicloud.com/instanodes-organization/raas-stage:v1.10.1
           ports:
-            - containerPort: 3005
+            - containerPort: 3007
           envFrom:
             - configMapRef:
                 name: raas-stage-config
@@ -33,7 +33,7 @@ spec:
           startupProbe:
             httpGet:
               path: /raas/health # ✅ Health check path
-              port: 3005 # 🌐 Health check port
+              port: 3007 # 🌐 Health check port
             failureThreshold: 12 # ⏰ Retry 12 times (60 seconds total)
             periodSeconds: 5 # 🔄 Check every 5 seconds
             timeoutSeconds: 2 # ⏱️ Timeout after 2 seconds if no response
@@ -42,7 +42,7 @@ spec:
           livenessProbe:
             httpGet:
               path: /raas/health # ✅ Health check path
-              port: 3005 # 🌐 Health check port
+              port: 3007 # 🌐 Health check port
             initialDelaySeconds: 10 # ⏳ Wait 10 seconds before starting first probe
             periodSeconds: 15 # 🔄 Check every 15 seconds after initial delay
             failureThreshold: 3 # ❌ Retry 3 times before marking unhealthy
@@ -51,7 +51,7 @@ spec:
           readinessProbe:
             httpGet:
               path: /raas/health # ✅ Health check path
-              port: 3005 # 🌐 Health check port
+              port: 3007 # 🌐 Health check port
             initialDelaySeconds: 5 # ⏳ Wait 5 seconds before starting first readiness check
             periodSeconds: 10 # 🔄 Check every 10 seconds after initial delay
             failureThreshold: 3 # ❌ Retry 3 times before marking not ready
