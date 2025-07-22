@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: admin-stage-container
-          image: swr.la-north-2.myhuaweicloud.com/instanodes-organization/admin-stage:v1.2.6
+          image: swr.la-north-2.myhuaweicloud.com/instanodes-organization/admin-stage:v1.2.7
           ports:
             - containerPort: 3005
           envFrom:
