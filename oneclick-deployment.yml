@@ -30,21 +30,21 @@ spec:
               memory: '512Mi'
           startupProbe:
             httpGet:
-              path: /admin/health-check
+              path: /one-click/health
               port: 3004
             failureThreshold: 12
             periodSeconds: 5
             timeoutSeconds: 2
           livenessProbe:
             httpGet:
-              path: /admin/health-check
+              path: /one-click/health
               port: 3004
             initialDelaySeconds: 10
             periodSeconds: 15
             failureThreshold: 3
           readinessProbe:
             httpGet:
-              path: /admin/health-check
+              path: /one-click/health
               port: 3004
             initialDelaySeconds: 5
             periodSeconds: 10
