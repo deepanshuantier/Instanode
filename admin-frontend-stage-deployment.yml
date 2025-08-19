@@ -31,7 +31,7 @@ spec:
 
           startupProbe:
             httpGet:
-              path: / # Adjust if your Nginx serves a different health route
+              path: /app/build/index.html # Adjust if your Nginx serves a different health route
               port: 80
             failureThreshold: 12
             periodSeconds: 5
@@ -39,7 +39,7 @@ spec:
 
           livenessProbe:
             httpGet:
-              path: /
+              path: /app/build/index.html
               port: 80
             initialDelaySeconds: 10
             periodSeconds: 15
@@ -47,7 +47,7 @@ spec:
 
           readinessProbe:
             httpGet:
-              path: /
+              path: /app/build/index.html
               port: 80
             initialDelaySeconds: 5
             periodSeconds: 10
