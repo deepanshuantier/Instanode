@@ -21,7 +21,7 @@ spec:
             - containerPort: 3015
           envFrom:
             - configMapRef:
-                name: user-stage-config
+                name: cronjob-config
           resources:
             requests:
               cpu: '500m'
