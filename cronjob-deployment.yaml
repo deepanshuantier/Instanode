@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cronjob
+  namespace: instanode
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cronjob
+  template:
+    metadata:
+      labels:
+        app: cronjob
+    spec:
+      containers:
+        - name: cronjob-container
+          image: swr.la-north-2.myhuaweicloud.com/instanodes-organization/cron-job:1.0.1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3015
+          envFrom:
+            - configMapRef:
+                name: user-stage-config
+          resources:
+            requests:
+              cpu: '500m'
+              memory: '512Mi'
+            limits:
+              cpu: '1000m'
+              memory: '1024Mi'
+          # Uncomment these as needed
+          startupProbe:
+            httpGet:
+              path: /cron-service/health
+              port: 3015
+            failureThreshold: 12
+            periodSeconds: 5
+            timeoutSeconds: 2
+          livenessProbe:
+            httpGet:
+              path: /cron-service/health
+              port: 3015
+            initialDelaySeconds: 10
+            periodSeconds: 7
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /cron-service/health
+              port: 3015
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            failureThreshold: 3
+
+      imagePullSecrets:
+        - name: default-secret
+      restartPolicy: Always
