@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: cronjob-container
-          image: swr.la-north-2.myhuaweicloud.com/instanodes-organization/cron-job:v1.0.3
+          image: swr.la-north-2.myhuaweicloud.com/instanodes-organization/cron-job:v1.0.4
           imagePullPolicy: Always
           ports:
             - containerPort: 3015
